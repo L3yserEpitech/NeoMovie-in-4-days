@@ -1,0 +1,25 @@
+.profilNav {
+    width: 20%;
+}
+
+.profilContainer {
+    width: 80%;
+}
+
+@media (max-width:550px) {
+    .profilPageContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .profilContainer {
+        width: 100%;
+        padding: 0 20px;
+    }
+    .navProfil {
+        margin-left: 40px;
+    }
+    .linkProfil {
+        text-decoration: underline;
+    }
+}

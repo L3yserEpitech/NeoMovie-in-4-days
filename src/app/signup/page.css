@@ -1,0 +1,21 @@
+.loginContainer {
+    height: calc(100vh - 65px);
+    width: 100vw;
+    display: flex;
+}
+
+.loginFormContainer, .imageRollerContainer {
+    width: 50%;
+}
+
+@media (max-width: 1200px) {
+    .imageRollerContainer {
+        display: none;
+    }
+    .loginFormContainer {
+        width: 100%;
+    }
+    .borderLoginForm {
+        border: none;
+    }
+}
