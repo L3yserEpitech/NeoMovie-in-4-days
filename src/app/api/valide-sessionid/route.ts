@@ -22,7 +22,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         );
     }
     const id = true
-    console.log("sessionId:", sessionId)
     return new NextResponse(
         JSON.stringify({ message: 'SessionId founded', id }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }

@@ -38,7 +38,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       const body = await req.json()
       const { newEmail } = body
       
-      console.log("slt")
     const decodedToken = verifyToken(authToken)
     //@ts-ignore
     const email = decodedToken?.email

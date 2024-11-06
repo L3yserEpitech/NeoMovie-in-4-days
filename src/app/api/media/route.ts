@@ -20,7 +20,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     const response = await fetch('https://api.movieposterdb.com/v1/random/movies', init);
     const data = await response.json();
-    console.log(data)
 
     return new NextResponse(
       JSON.stringify(data),

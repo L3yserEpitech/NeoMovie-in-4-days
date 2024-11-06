@@ -77,7 +77,6 @@ export const MediaProvider: React.FC<MediaProviderProps> = ({ children }) => {
         try {
           const response = await fetch(url, options);
           const data = await response.json();
-          console.log("movie : ", data);
   
           // Utilisation de prevState pour mettre à jour popularMovie
           setMediaData((prevState) => ({
@@ -101,7 +100,6 @@ export const MediaProvider: React.FC<MediaProviderProps> = ({ children }) => {
         try {
           const response = await fetch(url, options);
           const data = await response.json();
-          console.log("tv : ", data);
   
           // Utilisation de prevState pour mettre à jour popularTV
           setMediaData((prevState) => ({
@@ -236,9 +234,6 @@ export const MediaProvider: React.FC<MediaProviderProps> = ({ children }) => {
           tvShowTriByGenre: tvShowTriByGenre, // Ajouter uniquement les séries triées par genre
         }));
       
-        console.log(allMovieTri); // Pour tester si les films et séries sont bien triés par genre
-        console.log(movieTriByGenre); // Pour tester si les films sont bien triés par genre
-        console.log(tvShowTriByGenre); // Pour tester si les séries sont bien triées par genre
       };
 
       getPopularTVList()

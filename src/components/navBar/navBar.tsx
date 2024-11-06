@@ -30,7 +30,6 @@ export default function NavbarComponents() {
   ];
 
   const handleLogOut = async () => {
-    console.log("e[knaein aenhiapoha")
     const response = await fetch('/api/logout', {
       method: 'POST',
       headers: {

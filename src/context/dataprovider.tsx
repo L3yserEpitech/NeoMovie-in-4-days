@@ -136,7 +136,6 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     }
 
     if (isData) {
-      console.log("eknalebnaieiaoeioa;eioa")
       verifySessionId()
     }
   }, [isData])
