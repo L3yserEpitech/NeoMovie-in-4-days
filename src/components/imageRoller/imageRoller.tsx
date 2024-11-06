@@ -2,35 +2,35 @@ import Marquee from "@/components/ui/marquee";
 
 const logos = [
   {
-    name: "Microsoft",
+    name: "wallpaper_1",
     img: "/affiche1.jpg",
   },
   {
-    name: "Apple",
+    name: "wallpaper_2",
     img: "/affiche2.jpg",
   },
   {
-    name: "Google",
+    name: "wallpaper_3",
     img: "/affiche3.jpg",
   },
   {
-    name: "Microsoft",
+    name: "wallpaper_4",
     img: "/affiche4.jpg",
   },
   {
-    name: "Apple",
+    name: "wallpaper_5",
     img: "/affiche5.jpg",
   },
   {
-    name: "Google",
+    name: "wallpaper_6",
     img: "/affiche6.jpg",
   },
   {
-    name: "Google",
+    name: "wallpaper_7",
     img: "/affiche7.jpg",
   },
   {
-    name: "Google",
+    name: "wallpaper_8",
     img: "/affiche8.jpg",
   },
 ];
