@@ -86,7 +86,7 @@ export const MediaProvider: React.FC<MediaProviderProps> = ({ children }) => {
           method: 'GET',
           headers: {
             accept: 'application/json',
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZGE3NGZkY2E0MjBjYjdkMDAxZDhhOGNmZTU2NWI4MiIsIm5iZiI6MTcyOTI0MzY5My4zODMyMjMsInN1YiI6IjY3MGU0Y2Y5YjE1ZDk3YjFhOTNkODI1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._LbjCEP9sCsKOw3TRqU0VNFk5AUe4pBvXzKj4leyOoc`,
+            Authorization: `Bearer ${process.env.TOKEN_TMDB}`,
           },
         };
 
@@ -108,7 +108,7 @@ export const MediaProvider: React.FC<MediaProviderProps> = ({ children }) => {
           method: 'GET',
           headers: {
             accept: 'application/json',
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZGE3NGZkY2E0MjBjYjdkMDAxZDhhOGNmZTU2NWI4MiIsIm5iZiI6MTcyOTI0MzY5My4zODMyMjMsInN1YiI6IjY3MGU0Y2Y5YjE1ZDk3YjFhOTNkODI1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._LbjCEP9sCsKOw3TRqU0VNFk5AUe4pBvXzKj4leyOoc`,
+            Authorization: `Bearer ${process.env.TOKEN_TMDB}`,
           },
         };
         try {
@@ -132,7 +132,7 @@ export const MediaProvider: React.FC<MediaProviderProps> = ({ children }) => {
             method: 'GET',
             headers: {
               accept: 'application/json',
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZGE3NGZkY2E0MjBjYjdkMDAxZDhhOGNmZTU2NWI4MiIsIm5iZiI6MTcyOTI0MzY5My4zODMyMjMsInN1YiI6IjY3MGU0Y2Y5YjE1ZDk3YjFhOTNkODI1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._LbjCEP9sCsKOw3TRqU0VNFk5AUe4pBvXzKj4leyOoc`,
+              Authorization: `Bearer ${process.env.TOKEN_TMDB}`,
             }
           };
 
@@ -168,7 +168,7 @@ export const MediaProvider: React.FC<MediaProviderProps> = ({ children }) => {
           method: 'GET',
           headers: {
             accept: 'application/json',
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZGE3NGZkY2E0MjBjYjdkMDAxZDhhOGNmZTU2NWI4MiIsIm5iZiI6MTcyOTI0MzY5My4zODMyMjMsInN1YiI6IjY3MGU0Y2Y5YjE1ZDk3YjFhOTNkODI1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._LbjCEP9sCsKOw3TRqU0VNFk5AUe4pBvXzKj4leyOoc`
+            Authorization: `Bearer ${process.env.TOKEN_TMDB}`
           }
         };
 

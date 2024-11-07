@@ -10,7 +10,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   try {
     const headers = new Headers();
-    headers.append('Authorization', 'Bearer 355|oiwu0k3mV0I11rWhssXPbAhwy7NmO7OuMUBeRhMc');
+    headers.append('Authorization', `Bearer ${process.env.KEY}`);
     headers.append('Accept', 'application/json');
 
     const init = {
