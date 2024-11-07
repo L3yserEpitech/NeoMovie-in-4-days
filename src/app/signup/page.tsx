@@ -63,7 +63,7 @@ export default function Signup() {
           },
           body: JSON.stringify({ email, password, prenom, nom, isRemember })
       });
-      const data = await response.json();
+      await response.json();
       const status = response.status
       if (status === 409) {
         resetForm()

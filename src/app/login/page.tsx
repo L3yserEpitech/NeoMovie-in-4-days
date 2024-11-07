@@ -122,7 +122,7 @@ export default function Login() {
                 </Button>
                 <Spacer y={4} />
                 <p className="text-xs text-neutral-400 w-full text-center">
-                  Vous n'avez pas de compte ? 
+                  Vous n&apos;avez pas de compte ? 
                   <Link href="#" underline="always" className="text-xs ml-1" onClick={() => router.push("/signup")}>Sign Up</Link>
                 </p>
               </div>

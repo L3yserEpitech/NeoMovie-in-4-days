@@ -1,15 +1,9 @@
 "use client";
-
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
-import { useMyContext as useDataContext } from '@/context/dataprovider';
 import { useMediaContext } from '@/context/mediaprovider';
-import { ScrollShadow } from "@nextui-org/react";
-import { Pagination, PaginationItem, PaginationCursor } from "@nextui-org/pagination";
 import { Tabs, Tab } from "@nextui-org/tabs";
 import { Spacer } from "@nextui-org/spacer";
-import { Divider } from "@nextui-org/divider";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
-
 import {
   Carousel,
   CarouselContent,
@@ -18,10 +12,21 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+interface Movie {
+  title?: string;
+  name?: string;
+  overview: string;
+  release_date?: string;
+  first_air_date?: string;
+  vote_average: number;
+  backdrop_path: string;
+  poster_path: string;
+  id: number;
+}
+
 export default function Home() {
-  const { formData, setFormData } = useDataContext();
-  const { popularMovie, popularTV, movieNowPlaying, allMovieTri } = useMediaContext();
-  const [popTabs, setPopTabs] = useState<string | any>("films");
+  const { popularMovie, popularTV, movieNowPlaying} = useMediaContext();
+  const [popTabs] = useState<string>("films");
 
   const [mediaSelected, setMediaSelected] = useState({
     title: "",
@@ -67,7 +72,7 @@ export default function Home() {
         isSelected: true,
       }));
     }
-  }, [movieNowPlaying]);
+  }, [movieNowPlaying, mediaSelected.isSelected]);
 
   const CarouselActualMovie = () => {
     return (
@@ -105,7 +110,7 @@ export default function Home() {
       <>
         {popularMovie ? (
           <ul>
-            {popularMovie.map((movie: any,) => (
+            {popularMovie.map((movie: Movie,) => (
               <li
                 className="h-[120px] flex cursor-pointer hover:bg-neutral-900 rounded-md transition-all duration-200 ease mb-4"
                 key={movie.id}
@@ -116,7 +121,7 @@ export default function Home() {
                   alt="img movie"
                 />
                 <div className="flex flex-col ml-3 justify-end pb-3 pr-3"
-                  onClick={() => selectedMedia(movie.title, movie?.overview, movie?.release_date, movie?.vote_average, movie?.backdrop_path, movie?.poster_path)}
+                  onClick={() => selectedMedia(movie.title || "", movie?.overview, movie?.release_date || "", movie?.vote_average, movie?.backdrop_path, movie?.poster_path)}
                 >
                   <h2 className="font-semibold text-sm">{movie.title}</h2>
                   <Spacer y={3} />
@@ -141,7 +146,7 @@ export default function Home() {
       <>
         {popularTV ? (
           <ul>
-            {popularTV.map((tv: any) => (
+            {popularTV.map((tv: Movie) => (
               <li
                 className="h-[120px] flex cursor-pointer hover:bg-neutral-900 rounded-md transition-all duration-200 ease mb-4"
                 key={tv.id}
@@ -152,7 +157,7 @@ export default function Home() {
                   alt="img tv"
                 />
                 <div className="flex flex-col ml-3 justify-end pb-3 pr-3"
-                onClick={() => selectedMedia(tv.name, tv?.overview, tv?.first_air_date, tv?.vote_average, tv?.backdrop_path, tv?.poster_path)}>
+                onClick={() => selectedMedia(tv.name || "", tv?.overview, tv?.first_air_date || "", tv?.vote_average, tv?.backdrop_path, tv?.poster_path)}>
                   <h2 className="font-semibold text-sm">{tv.name}</h2>
                   <Spacer y={3} />
                   <p className="text-xs text-neutral-300">{tv.first_air_date}</p>
@@ -174,9 +179,8 @@ export default function Home() {
   const MovieCategories = () => {
     const { allMovieTri } = useMediaContext();
   
-    // Vérifie que allMovieTri existe et qu'il n'est pas nul
     if (!allMovieTri || Object.keys(allMovieTri).length === 0) {
-      return <p>Loading...</p>; // Affiche un message de chargement ou un autre contenu temporaire
+      return <p>Loading...</p>;
     }
   
     return (
@@ -190,13 +194,13 @@ export default function Home() {
             {/* Afficher un carousel pour chaque catégorie */}
             <Carousel className="w-full max-w-carousel">
               <CarouselContent className="-ml-1">
-                {allMovieTri[category].map((movie: any, index: number) => (
+                {allMovieTri[category].map((movie: Movie, index: number) => (
                   <CarouselItem
                     key={index}
                     className="pl-1 flex-1 min-w-[160px] md:min-w-[160px] lg:min-w-[160px] xl:min-w-[160px] max-w-[300px]"
                   >
                     <div className="p-1 justify-center flex h-[220px] cursor-pointer"
-                    onClick={() => selectedMedia(movie?.title || movie?.name, movie?.overview, movie?.release_date || movie?.first_air_date, movie?.vote_average, movie?.backdrop_path, movie?.poster_path)}
+                    onClick={() => selectedMedia(movie?.title || movie?.name || "", movie?.overview, movie?.release_date || movie?.first_air_date || "", movie?.vote_average, movie?.backdrop_path, movie?.poster_path)}
                     >
                       <img
                         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

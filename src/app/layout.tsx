@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { DataProvider } from "@/context/dataprovider";
 import { MediaProvider } from "@/context/mediaprovider";
-import NavbarComponents from '@/components/navBar/navBar';
-import { useMediaContext } from '@/context/mediaprovider';
-import LayoutContent from '@/context/test';; 
+import LayoutContent from '@/context/progress';; 
 
 export const metadata: Metadata = {
   title: "My Neo Movie",

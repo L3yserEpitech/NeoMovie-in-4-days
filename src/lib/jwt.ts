@@ -1,9 +1,13 @@
 import jwt from 'jsonwebtoken';
 
 const secretKey = process.env.JWT_SECRET || 'your_key';
-// a modifer la secret key
 
-export const generateToken = (user: any) => {
+interface User {
+  id: number;
+  email: string;
+}
+
+export const generateToken = (user: User) => {
   return jwt.sign({ id: user.id, email: user.email}, secretKey, {
     expiresIn: '30m',
   });
@@ -12,7 +16,8 @@ export const generateToken = (user: any) => {
 export const verifyToken = (token: string) => {
   try {
     return jwt.verify(token, secretKey);
-  } catch (err) {
+  } catch (error) {
+    console.log("error: ", error)
     return null;
   }
 };

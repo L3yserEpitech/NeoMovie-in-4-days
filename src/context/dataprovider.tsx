@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-// Définissez l'interface pour les données du formulaire
 interface FormData {
   email: string;
   prenom: string;
@@ -13,13 +12,11 @@ interface FormData {
   isSessionId: number;
 }
 
-// Définissez l'interface du contexte pour typer correctement les valeurs
 interface DataContextType {
   formData: FormData;
   setFormData: React.Dispatch<React.SetStateAction<FormData>>;
 }
 
-// Initialisez le contexte avec un type qui peut être undefined
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
 interface DataProviderProps {
@@ -27,17 +24,16 @@ interface DataProviderProps {
 }
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
-
-  const [isData, setIsData] = useState(false)
+  const [isData, setIsData] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
-      email: "",
-      prenom: "",
-      nom: "",
-      abonnement: "",
-      connected: false,
-      request: false,
-      isSessionId: 0,
+    email: "",
+    prenom: "",
+    nom: "",
+    abonnement: "",
+    connected: false,
+    request: false,
+    isSessionId: 0,
   });
 
   useEffect(() => {
@@ -46,108 +42,79 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         const response = await fetch('/api/user-data', {
           method: 'POST',
           headers: {
-              'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
           },
         });
         const data = await response.json();
-        const status = response.status
+        const status = response.status;
         if (status === 200) {
-          setFormData({
-            ...formData,
+          setFormData((prevFormData) => ({
+            ...prevFormData,
             email: data.user.email,
             prenom: data.user.prenom,
             nom: data.user.nom,
             abonnement: data.user.abonnement,
             connected: true,
             request: true,
-          })
-          setIsData(true)
-          return
+          }));
+          setIsData(true);
+          return;
         }
         if (status !== 200) {
-          setFormData({
-            ...formData,
+          setFormData((prevFormData) => ({
+            ...prevFormData,
             request: true,
-          })
-          return
+          }));
+          return;
         }
       } catch (error) {
-          console.log('Error request authentification : ', error);
+        console.log('Error request authentification : ', error);
       }
-    }
+    };
 
-    const verifySessionId = async () => {
-      try {
-        const response = await fetch('/api/valide-sessionid', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-        });
-        const data = await response.json();
-        const status = response.status
-        if (status === 401) {
-          setFormData({
-            ...formData,
-            isSessionId: 2,
-          })
-          return
-        } else if (status === 200) {
-          setFormData({
-            ...formData,
-            isSessionId: 1,
-          })
-        }
-      } catch (error) {
-          console.log('Error request authentification : ', error);
-      }
-    }
-
-    handleData()
-  }, [])
+    handleData();
+  }, []);
 
   useEffect(() => {
-
     const verifySessionId = async () => {
       try {
         const response = await fetch('/api/valide-sessionid', {
           method: 'POST',
           headers: {
-              'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
           },
         });
-        const data = await response.json();
-        const status = response.status
+        await response.json();
+        const status = response.status;
         if (status === 401) {
-          setFormData({
-            ...formData,
+          setFormData((prevFormData) => ({
+            ...prevFormData,
             isSessionId: 2,
-          })
-          return
+          }));
+          return;
         } else if (status === 200) {
-          setFormData({
-            ...formData,
+          setFormData((prevFormData) => ({
+            ...prevFormData,
             isSessionId: 1,
-          })
+          }));
         }
       } catch (error) {
-          console.log('Error request authentification : ', error);
+        console.log('Error request authentification : ', error);
       }
-    }
+    };
 
     if (isData) {
-      verifySessionId()
+      verifySessionId();
     }
-  }, [isData])
+  }, [isData]);
 
   return (
     <DataContext.Provider value={{ formData, setFormData }}>
-    {children}
+      {children}
     </DataContext.Provider>
   );
 };
 
-// Custom hook pour utiliser le contexte
 export const useMyContext = () => {
   const context = useContext(DataContext);
 

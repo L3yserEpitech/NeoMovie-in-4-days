@@ -1,10 +1,10 @@
 "use client"
 import "./page.css"
 import React, { useState } from "react";
-import { Shield, Laptop, Disc3, Gem, Router } from 'lucide-react';
+import { Shield, Laptop, Disc3, Gem} from 'lucide-react';
 
 import { Marquee3D } from "@/components/imageRoller/imageRoller"
-import {Input, Spacer, Button, Checkbox, Link, Tabs, Tab} from "@nextui-org/react";
+import {Input, Spacer, Button, Tabs, Tab} from "@nextui-org/react";
 
 import { useMyContext as useDataContext } from '@/context/dataprovider';
 import { useRouter } from "next/navigation";
@@ -17,7 +17,8 @@ export default function Abonnement() {
 
     const router = useRouter()
 
-    const [tabs, setTabs] = useState<any>(null)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [tabs, setTabs] = useState<any>(null);
     const [payement, setPayement] = useState(false)
     const [planSelected, setPlanSelected] = useState("")
     const [planPrix, setPlanPrix] = useState("")
@@ -31,10 +32,6 @@ export default function Abonnement() {
     const [nomError, setNomError] = useState(false)
     const [codeCarteError, setCodeCarteError] = useState(false)
     const [codeCVVError, setCodeCVVError] = useState(false)
-
-
-    
-
 
     const PayementModal = (key : string, abonnement: string, prix : string, ecran: string) => {
         if (!formData.connected) {
@@ -121,7 +118,7 @@ export default function Abonnement() {
                                         {formData.abonnement === "free" ?
                                             <p className="text-white">Abonnement actuel</p>
                                         :
-                                            <p className="text-white">S'abonner maintenant</p>
+                                            <p className="text-white">S&apos;abonner maintenant</p>
                                         }
                                     </Button>
                                 </div>
@@ -145,7 +142,7 @@ export default function Abonnement() {
                                         {formData.abonnement === "starter" ?
                                             <p className="text-white">Abonnement actuel</p>
                                         :
-                                            <p className="text-white">S'abonner maintenant</p>
+                                            <p className="text-white">S&apos;abonner maintenant</p>
                                         }
                                     </Button>
                                 </div>
@@ -169,7 +166,7 @@ export default function Abonnement() {
                                         {formData.abonnement === "premium" ?
                                             <p className="text-white">Abonnement actuel</p>
                                         :
-                                            <p className="text-white">S'abonner maintenant</p>
+                                            <p className="text-white">S&apos;abonner maintenant</p>
                                         }
                                     </Button>
                                 </div>
@@ -196,7 +193,7 @@ export default function Abonnement() {
                                         {formData.abonnement === "free" ?
                                             <p className="text-white">Abonnement actuel</p>
                                         :
-                                            <p className="text-white">S'abonner maintenant</p>
+                                            <p className="text-white">S&apos;abonner maintenant</p>
                                         }
                                     </Button>
                                 </div>
@@ -220,7 +217,7 @@ export default function Abonnement() {
                                         {formData.abonnement === "starter" ?
                                             <p className="text-white">Abonnement actuel</p>
                                         :
-                                            <p className="text-white">S'abonner maintenant</p>
+                                            <p className="text-white">S&apos;abonner maintenant</p>
                                         }
                                     </Button>
                                 </div>
@@ -244,7 +241,7 @@ export default function Abonnement() {
                                         {formData.abonnement === "premium" ?
                                             <p className="text-white">Abonnement actuel</p>
                                         :
-                                            <p className="text-white">S'abonner maintenant</p>
+                                            <p className="text-white">S&apos;abonner maintenant</p>
                                         }
                                     </Button>
                                 </div>

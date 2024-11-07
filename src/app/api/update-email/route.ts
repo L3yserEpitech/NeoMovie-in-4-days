@@ -39,13 +39,13 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       const { newEmail } = body
       
     const decodedToken = verifyToken(authToken)
-    //@ts-ignore
+    //@ts-expect-error email utilisateur
     const email = decodedToken?.email
 
-    const result = await sql`
-        UPDATE taker
-        SET email = ${newEmail}
-        WHERE email = ${email};
+    await sql`
+      UPDATE taker
+      SET email = ${newEmail}
+      WHERE email = ${email};
     `;
 
     return new NextResponse(
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   } catch (error) {
     return new NextResponse(
-      JSON.stringify({ error: 'Bad Request' }),
+      JSON.stringify({ error: error }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }

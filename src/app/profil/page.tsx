@@ -9,7 +9,6 @@ import { Spacer } from "@nextui-org/spacer";
 import { Divider } from "@nextui-org/divider";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { stringify } from "querystring";
 
 export default function Profil() {
 
@@ -26,10 +25,6 @@ export default function Profil() {
   const [successPrenom, setSuccessPrenom] = useState(false)
   const [successEmail, setSuccessEmail] = useState(false)
   const [errorNom, setErrorNom] = useState("")
-  const [errorPrenom, setErrorPrenom] = useState("")
-  const [errorEmail, setErrorEmail] = useState("")
-
-
 
   useEffect(() => {
     if (!formData.connected) {
@@ -54,7 +49,7 @@ export default function Profil() {
         },
         body: JSON.stringify({newNom})
       });
-      const data = await response.json();
+      await response.json();
       const status = response.status
       if (status === 200) {
         setFormData({
@@ -88,7 +83,7 @@ export default function Profil() {
         },
         body: JSON.stringify({newPrenom})
       });
-      const data = await response.json();
+      await response.json();
       const status = response.status
       if (status === 200) {
         setFormData({
@@ -122,7 +117,7 @@ export default function Profil() {
         },
         body: JSON.stringify({newEmail})
       });
-      const data = await response.json();
+      await response.json();
       const status = response.status
       if (status === 200) {
         setFormData({
@@ -162,7 +157,7 @@ export default function Profil() {
                   type="text" 
                   label="Votre Nom" 
                   isInvalid={invalidNom}
-                  errorMessage="Veuillez entrer votre nom"
+                  errorMessage={errorNom}
                   onValueChange={setNewNom}
                   value={newNom}
                   description={successNom ? "Votre nom a bien été mis à jour." : null}
@@ -227,7 +222,7 @@ export default function Profil() {
             <Divider orientation="horizontal"></Divider>
             <Spacer y={4}/>
             <Button color="primary" variant="shadow" className="dark:text-white text-black" radius="sm" onClick={() => router.push("/abonnement")}>
-              Changer d'abonnement
+              Changer d&apos;abonnement
             </Button>
           </div>
         }

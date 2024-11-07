@@ -64,7 +64,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         }
     } catch (error) {
         return new NextResponse(
-            JSON.stringify({ error: 'Bad Request' }),
+            JSON.stringify({ error: error }),
             { status: 500, headers: { 'Content-Type': 'application/json' } }
         );
     }

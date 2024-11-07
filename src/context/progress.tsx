@@ -1,9 +1,5 @@
 "use client"
 
-
-import type { Metadata } from "next";
-import { DataProvider } from "@/context/dataprovider";
-import { MediaProvider } from "@/context/mediaprovider";
 import NavbarComponents from '@/components/navBar/navBar';
 import { useMediaContext } from '@/context/mediaprovider';
 import CircularProgress from '@mui/material/CircularProgress';

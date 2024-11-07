@@ -25,7 +25,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
 
     const decodedToken = verifyToken(authToken)
-    //@ts-ignore
+    //@ts-expect-error email utilisateur
     const email = decodedToken?.email
 
     const userData = await sql`
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   } catch (error) {
     return new NextResponse(
-      JSON.stringify({ error: 'Bad Request' }),
+      JSON.stringify({ error: error }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }

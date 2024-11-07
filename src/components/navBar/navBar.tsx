@@ -8,8 +8,7 @@ import {
   Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, 
   NavbarMenu, NavbarContent, NavbarItem, Link, Button, DropdownItem, 
   DropdownTrigger, Dropdown, DropdownMenu, Avatar, 
-  Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure,
-  CircularProgress, Skeleton
+  Modal, ModalContent, ModalHeader, ModalBody, useDisclosure,
 } from "@nextui-org/react";
 import { useMyContext } from "@/context/dataprovider";
 

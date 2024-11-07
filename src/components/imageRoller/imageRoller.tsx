@@ -1,4 +1,5 @@
 import Marquee from "@/components/ui/marquee";
+/* eslint-disable @next/next/no-img-element */
 
 const logos = [
   {

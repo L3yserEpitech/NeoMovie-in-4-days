@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export async function middleware(req: NextRequest) {
-  const { method, nextUrl } = req;
+  const { method } = req;
 
   if (['POST', 'PUT', 'PATCH', 'DELETE', 'GET'].includes(method)) {
     const contentType = req.headers.get('content-type');
